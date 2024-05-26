@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+    <title>Premier League 2024-2025 Predictions</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Premier League 2024-2025 Predictions</h1>
+        <div class="button-container mt-4">
+            <button id="show-all" class="btn btn-primary">Show All</button>
+            <button id="show-champions" class="btn btn-success">Champions League</button>
+            <button id="show-europa" class="btn btn-warning">Europa League</button>
+            <button id="show-conference" class="btn btn-info">Conference League</button>
+            <button id="show-relegation" class="btn btn-danger">Relegation</button>
+        </div>
+        <div id="table-container" class="table-responsive mt-4">
+            {% for table in tables %}
+                {{ table|safe }}
+            {% endfor %}
+        </div>
+    </div>
+    <div id="welcome-popup" class="welcome-popup">
+        <div class="welcome-popup-content">
+            <span id="close-popup" class="close">&times;</span>
+            <h2>Welcome to Premier League Predictions</h2>
+            <p>This website provides predictions for the Premier League 2024-2025 season based on historical performance. Use the buttons to filter teams by their predicted standings for Champions League, Europa League, Conference League, and relegation.</p>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
